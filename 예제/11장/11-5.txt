@@ -1,0 +1,54 @@
+package com.example.webapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.example.webapp.entity.ToDo;
+import com.example.webapp.repository.ToDoMapper;
+
+import lombok.RequiredArgsConstructor;
+
+@SpringBootApplication
+@RequiredArgsConstructor
+public class WebappApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(WebappApplication.class, args)
+        .getBean(WebappApplication.class).exe();
+    }
+
+    /** DI */
+    private final ToDoMapper mapper;
+    
+    public void exe() {
+        // ★ 전체 검색
+        System.out.println("=== 전체 검색 ===");
+        for (ToDo row : mapper.selectAll()) {
+            System.out.println(row);
+        }
+        // ★ 1건 검색
+        System.out.println("=== １건 검색 ===");
+        System.out.println(mapper.selectById(1));
+        // ★등록
+        // 등록 데이터 생성
+        ToDo todo = new ToDo();
+        todo.setTodo("리포지터리 테스트");
+        todo.setDetail("DB에 등록");
+        mapper.insert(todo);
+        System.out.println("=== 등록 확인 ===");
+        System.out.println(mapper.selectById(4));
+        // ★ 업데이트
+        ToDo target = mapper.selectById(4);
+        target.setTodo("리포지터리 테스트: 업데이트");
+        target.setDetail("DB에 업데이트");
+        mapper.update(target);
+        System.out.println("=== 업데이트 확인 ===");
+        System.out.println(mapper.selectById(4));
+        // ★ 삭제
+        mapper.delete(4);
+        System.out.println("=== 삭제 확인 ===");
+        for (ToDo row : mapper.selectAll()) {
+            System.out.println(row);
+        }        
+    }
+}

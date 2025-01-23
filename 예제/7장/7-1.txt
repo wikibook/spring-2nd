@@ -1,0 +1,15 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class RequestParamController {
+	
+	// GET 및 URL(/show)
+	@GetMapping("show")
+	public String showView() {
+		// 표시할 뷰 이름
+		return "input";
+	}
+}

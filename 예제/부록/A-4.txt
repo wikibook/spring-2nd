@@ -1,0 +1,30 @@
+package com.example.webapp.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+	// SecurityFilterChain의 빈 정의
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http
+			// ★ HTTP 요청에 대한 보안 설정
+			.authorizeHttpRequests(authz -> authz
+			// /login은 인증이 필요하지 않음
+			.requestMatchers("/login").permitAll()
+			// 그 밖의 요청은 인증이 필요
+			.anyRequest().authenticated())
+			// ★ 폼 기반 로그인 설정
+			.formLogin(form -> form
+			// 커스텀 로그인 페이지 URL 지정
+			.loginPage("/login")
+			);
+		return http.build();
+	}
+}

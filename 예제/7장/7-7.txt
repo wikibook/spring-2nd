@@ -1,0 +1,15 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class RequestParamMultipleController {
+	
+	// GET 및 URL(/multiple)
+	@GetMapping("multiple")
+	public String showView() {
+		// 반환값으로 뷰 이름을 반환
+		return "entry";
+	}
+}

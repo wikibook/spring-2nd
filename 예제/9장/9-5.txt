@@ -1,0 +1,4 @@
+-- books 테이블에 데이터를 등록
+INSERT INTO books (title, author) VALUES ('스프링 부트 핵심 가이드', '장정우');
+INSERT INTO books (title, author) VALUES ('그림으로 쉽게 이해하는 웹/HTTP/네트워크', '임지영');
+INSERT INTO books (title, author) VALUES ('엘라스틱서치 바이블', '여동현');

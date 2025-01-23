@@ -1,0 +1,17 @@
+# 데이터베이스 접속 URL
+# 여기서는 H2 데이터베이스의 메모리 모드를 사용
+spring.datasource.url=jdbc:h2:mem:testdb
+
+# 데이터베이스의 드라이버 클래스
+# 여기서는 H2 데이터베이스의 드라이버를 지정
+spring.datasource.driver-class-name=org.h2.Driver
+
+# 데이터베이스 접속 시 사용자 이름
+spring.datasource.username=sa
+
+# 데이터베이스 접속 시 비밀번호. 여기서는 비밀번호를 설정하지 않음.
+spring.datasource.password=
+
+# H2 데이터베이스의 콘솔을 활성화하기 위한 설정
+# 이를 통해 브라우저에서 H2 콘솔에 접근할 수 있음
+spring.h2.console.enabled=true

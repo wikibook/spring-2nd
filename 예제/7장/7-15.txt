@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>URL 임베딩과 버튼 판별</title>
+</head>
+<body>
+	<div>
+		<!-- URL에 값 삽입 -->
+		<h3><a th:href="@{/function/1}">기능-1</a></h3>
+		<h3><a th:href="@{/function/2}">기능-2</a></h3>
+		<h3><a th:href="@{/function/3}">기능-3</a></h3>
+		<!-- 같은 form 태그 안에 있는 여러 개의 버튼 -->
+		<form th:action="@{/send}" method="post">
+			<input type="submit" value="버튼 A" name="a">
+			<input type="submit" value="버튼 B" name="b">
+			<input type="submit" value="버튼 C" name="c">
+		</form>
+	</div>
+</body>
+</html>

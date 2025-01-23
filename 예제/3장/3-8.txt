@@ -1,0 +1,8 @@
+/**
+* 스프링 부트 시작
+* @param args
+*/
+public static void main(String[] args) {
+    SpringApplication.run(DiSampleApplication.class, args)
+    .getBean(DiSampleApplication.class).execute();
+}

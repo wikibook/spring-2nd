@@ -1,0 +1,4 @@
+// method에서 HTTP 메서드 GET을 지정합니다.
+@RequestMapping(value = "hello", method = RequestMethod.GET)
+// 여러 개의 method를 지정할 수 있습니다(GET, POST를 지정합니다).
+@RequestMapping(value = "hello", method = { RequestMethod.GET, RequestMethod.POST })

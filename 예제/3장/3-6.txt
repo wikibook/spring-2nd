@@ -1,0 +1,3 @@
+/** 주입되는 부분(인터페이스) */
+@Autowired
+private Greet g;

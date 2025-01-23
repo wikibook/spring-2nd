@@ -1,0 +1,4 @@
+<!-- 【SELECT】 모든 책을 가져오기 위한 SQL을 정의 -->
+<select id="getAllBooks" resultType="com.example.demo.entity.Book">
+    SELECT id, title, author FROM books ORDER BY id
+</select>

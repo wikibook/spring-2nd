@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>메뉴</title>
+</head>
+<body>
+    <h2>메뉴 화면</h2>
+    <hr>
+    <a th:href="@{/todos}">ToDo 목록으로 가기</a>
+</body>
+</html>

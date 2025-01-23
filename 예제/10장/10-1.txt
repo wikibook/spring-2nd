@@ -1,0 +1,13 @@
+# 데이터소스
+# Postgres 드라이버 설정
+spring.datasource.driver-class-name=org.postgresql.Driver
+# 데이터베이스 접속 URL 설정
+spring.datasource.url=jdbc:postgresql://localhost:5432/springdb
+# 데이터베이스 접속을 위한 사용자명 설정
+spring.datasource.username=springuser
+# 데이터베이스 접속을 위한 비밀번호 설정
+spring.datasource.password=p@ss
+# SQL 스크립트 초기화 모드 설정
+spring.sql.init.mode=always
+# 로그 표시 설정
+logging.level.com.example.webapp.repository=DEBUG

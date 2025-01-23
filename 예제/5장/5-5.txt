@@ -1,0 +1,4 @@
+// value 속성만 생략할 수 있습니다.
+@PostMapping("hello")
+// 여러 URL 경로를 지정할 수 있습니다.
+@PostMapping(value = { "hello", "hellospring" })

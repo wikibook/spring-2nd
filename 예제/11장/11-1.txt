@@ -1,0 +1,26 @@
+package com.example.webapp.entity;
+
+import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * ToDo: 엔티티
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ToDo {
+    /** 할일 ID */
+    private Integer id;
+    /** 할일 */
+    private String todo;
+    /** 할일 상세 보기 */
+    private String detail;
+    /** 작성 일자 */
+    private LocalDateTime createdAt;
+    /** 업데이트 일자 */
+    private LocalDateTime updatedAt;
+}

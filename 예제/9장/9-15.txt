@@ -1,0 +1,13 @@
+package com.example.demo.entity;
+
+import lombok.Data;
+
+@Data
+public class Review {
+	/** 리뷰 ID */
+	private int id;
+	/** 도서 ID */
+	private int bookId;
+	/** 리뷰 내용 */
+	private String reviewText;
+}

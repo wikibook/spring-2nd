@@ -1,0 +1,22 @@
+package com.example.webapp.form;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 할일: Form
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ToDoForm {
+    /** 할일 ID */
+    private Integer id;
+    /** 할일  */
+    private String todo;
+    /** 할일 상세 내용 */
+    private String detail;
+    /** 새 항목 여부 */
+    private Boolean isNew;
+}

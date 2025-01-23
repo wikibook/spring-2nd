@@ -1,0 +1,54 @@
+package com.example.webapp.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.example.webapp.entity.ToDo;
+import com.example.webapp.service.ToDoService;
+
+import lombok.RequiredArgsConstructor;
+
+/**
+ * ToDo: 컨트롤러
+ */
+@Controller
+@RequestMapping("/todos")
+@RequiredArgsConstructor
+public class ToDoController {
+
+    /** DI */
+    private final ToDoService toDoService;
+
+    /**
+     * '할일' 목록을 표시합니다.
+     */
+    @GetMapping
+    public String list(Model model) {
+        model.addAttribute("todos", toDoService.findAllToDo());
+        return "todo/list";
+    }
+
+    /**
+     * 특정 ID의 '할일'에 대한 세부 정보를 표시합니다.
+     */
+    @GetMapping("/{id}")
+    public String detail(@PathVariable Integer id, Model model,
+            RedirectAttributes attributes) {
+        // 특정 ID에 해당하는 '할일' 정보를 획득
+        ToDo ToDo = toDoService.findByIdToDo(id);
+        if (ToDo != null) {
+            // 대상 데이터가 있는 경우 모델에 저장
+            model.addAttribute("todo", toDoService.findByIdToDo(id));
+            return "todo/detail";
+        } else {
+            // 대상 데이터가 없는 경우 플래시 메시지 설정
+            attributes.addFlashAttribute("errorMessage", "대상 데이터가 없습니다");
+            // 리디렉션
+            return "redirect:/todos";
+        }
+    }
+}

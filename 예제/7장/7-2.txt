@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>RequestParam</title>
+</head>
+<body>
+	<h1>입력 화면</h1>
+	<hr>
+	<form action="./output.html" method="get">
+		<label for="get-value">입력 값:</label>
+		<input type="text" id="get-value" name="val">
+		<button type="submit">GET으로 전송</button>
+	</form>
+	<br/>
+	<form action="./output.html" method="post">
+		<label for="get-value">입력 값:</label>
+		<input type="text" id="get-value" name="val">
+		<button type="submit">POST로 전송</button>
+	</form>
+</body>
+</html>

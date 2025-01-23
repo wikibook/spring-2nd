@@ -1,0 +1,5 @@
+<mapper namespace="com.example.BookMapper">
+    <select id="getBookById" parameterType="int" resultType="com.example.Book">
+        SELECT * FROM books WHERE id = #{id}
+    </select>
+</mapper>

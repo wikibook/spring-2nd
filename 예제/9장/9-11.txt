@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>작업 결과</title>
+</head>
+<body>
+	<h1 th:text="${message}">메시지</h1>
+	<!-- 도서 목록의 경우 -->
+	<table th:if="${books}" border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>제목</th>
+				<th>저자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="book : ${books}">
+				<td th:text="${book.id}">ID</td>
+				<td th:text="${book.title}">제목</td>
+				<td th:text="${book.author}">저자</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- 도서 상세 정보의 경우 -->
+	<div th:if="${book}">
+		<p>
+			<strong>ID: </strong>
+			<span th:text="${book.id}">ID</span>
+		</p>
+		<p>
+			<strong>제목: </strong>
+			<span th:text="${book.title}">제목</span>
+		</p>
+		<p>
+			<strong>저자: </strong>
+			<span th:text="${book.author}">저자</span>
+		</p>
+	</div>
+	<a th:href="@{/}">메뉴로 돌아가기</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class RequestParamController {
+	
+	// GET 및 URL(/show)
+	@GetMapping("show")
+	public String showView() {
+		// 표시할 뷰 이름
+		return "input";
+	}
+
+	// GET 및 URL(/result)
+	@GetMapping("result")
+	public String showResultGet(
+			@RequestParam String val, Model model) {
+		// 모델에 전송된 값 설정
+		model.addAttribute("value", val);
+		// 표시할 뷰 이름
+		return "output";
+	}
+
+	// POST 및 URL(/result)
+	@PostMapping("result")
+	public String showResultPost(
+			@RequestParam String val, Model model) {
+		// 모델에 전송된 값 설정
+		model.addAttribute("value", val);
+		// 표시할 뷰 이름
+		return "output";
+	}
+
+}

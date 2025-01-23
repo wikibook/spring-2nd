@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>메뉴</title>
+</head>
+<body>
+    <h2>메뉴 화면</h2>
+    <hr>
+    <a th:href="@{/todos}">ToDo 목록으로 가기</a>
+    <!-- ▽▽▽▽▽ 예제 15.6 ▽▽▽▽▽ -->
+    <div sec:authentication="name">
+        로그인 정보의 name 값으로 변경됨
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        인증된 경우에만 표시
+    </div>
+    <!-- △△△△△ 예제 15.6 △△△△△ -->
+    <br>
+    <!-- 로그아웃 -->
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="로그아웃">
+    </form>
+</body>
+</html>

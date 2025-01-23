@@ -1,0 +1,22 @@
+-- 출판사 정보를 저장하는 테이블
+CREATE TABLE publishers (
+	id INT PRIMARY KEY AUTO_INCREMENT, -- 기본키로서의 ID. 자동으로 증가
+	name VARCHAR(255) NOT NULL -- 출판사명. NULL은 허용되지 않음
+);
+
+-- 책 정보를 저장하는 테이블
+CREATE TABLE books (
+	id INT PRIMARY KEY AUTO_INCREMENT, -- 기본키로서의 ID. 자동으로 증가
+	title VARCHAR(255) NOT NULL, -- 책 제목. NULL은 허용되지 않음
+	author VARCHAR(255) NOT NULL, -- 책의 저자명. NULL은 허용되지 않음
+	publisher_id INT, -- 출판사 ID. 출판사 테이블과 연관시키는 출판사 ID
+	FOREIGN KEY (publisher_id) REFERENCES publishers(id) -- 출판사 테이블에 대한 외래키 제약조건
+);
+
+-- 책에 대한 리뷰를 저장하는 테이블
+CREATE TABLE reviews (
+	id INT PRIMARY KEY AUTO_INCREMENT, -- 기본키로서의 ID. 자동으로 증가
+	book_id INT NOT NULL, -- 리뷰 대상 도서의 ID. NULL은 허용되지 않음
+	review_text TEXT, -- 리뷰 텍스트. NULL 허용
+	FOREIGN KEY (book_id) REFERENCES books(id) -- 도서 테이블에 대한 외래키 제약조건
+);

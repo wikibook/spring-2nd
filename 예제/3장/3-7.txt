@@ -1,0 +1,7 @@
+/**
+* 실행
+*/
+private void execute() {
+    String msg = g. greeting();
+    System.out.println(msg);
+}

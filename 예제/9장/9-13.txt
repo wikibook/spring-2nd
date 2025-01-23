@@ -1,0 +1,15 @@
+-- publishers 테이블에 데이터 등록
+INSERT INTO publishers (name) VALUES ('위키북스');
+INSERT INTO publishers (name) VALUES ('위키미디어');
+
+-- books 테이블에 데이터 등록
+INSERT INTO books (title, author, publisher_id) VALUES ('생성형 AI 업무 혁신', '박찬규, 윤가희', 1);
+INSERT INTO books (title, author, publisher_id) VALUES ('브릭메카의 미니 변신 로봇', '최상철', 2);
+INSERT INTO books (title, author, publisher_id) VALUES ('AI가 훔쳐간 인문학', '김철수', 1);
+
+-- reviews 테이블에 데이터 등록
+INSERT INTO reviews (book_id, review_text) VALUES (1, '매우 유용한 책이었습니다.');
+INSERT INTO reviews (book_id, review_text) VALUES (2, '아이가 정말 좋아해요.');
+INSERT INTO reviews (book_id, review_text) VALUES (2, '자투리 브릭을 활용할 수 있어서 마음에 들어요.');
+INSERT INTO reviews (book_id, review_text) VALUES (2, '변신 로봇이 아기자기하고 귀여워요.');
+INSERT INTO reviews (book_id, review_text) VALUES (3, 'AI에 관한 통찰력이 돋보입니다.');

@@ -1,0 +1,13 @@
+@Controller
+public class MyController {
+
+	@ModelAttribute("message")
+	public String setupMessage() {
+		return "Hello, World!";
+	}
+
+	@GetMapping("/greet")
+	public String greet() {
+		return "greeting-page";
+	}
+}

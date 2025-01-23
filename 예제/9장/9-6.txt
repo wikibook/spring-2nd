@@ -1,0 +1,13 @@
+package com.example.demo.entity;
+
+import lombok.Data;
+
+@Data
+public class Book {
+	/** 도서 ID */
+	private int id;
+	/** 제목 */
+	private String title;
+	/** 저자 */
+	private String author;
+}

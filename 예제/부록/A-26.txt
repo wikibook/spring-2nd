@@ -1,0 +1,67 @@
+package com.example.webapp.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.example.webapp.entity.Authentication;
+import com.example.webapp.entity.LoginUser;
+import com.example.webapp.entity.Role;
+import com.example.webapp.repository.AuthenticationMapper;
+
+import lombok.RequiredArgsConstructor;
+
+/**
+* 커스텀 인증 서비스
+*/
+@Service
+@RequiredArgsConstructor
+public class LoginUserDatailsServiceImpl implements UserDetailsService {
+	/** DI */
+	private final AuthenticationMapper authenticationMapper;
+
+	@Override
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+		// 인증 테이블에서 데이터를 가져옴
+		Authentication authentication = authenticationMapper.selectByUsername(username);
+		
+		// 대상 데이터가 있으면 UserDetails의 구현 클래스를 반환
+		if (authentication != null) {
+			// 대상 데이터가 존재
+			// UserDetails의 구현 클래스를 반환
+			return new LoginUser(authentication.getUsername(),
+					authentication.getPassword(),
+					getAuthorityList(authentication.getAuthority())	// 예제 A.26
+			);
+		} else {
+			// 대상 데이터가 존재하지 않음
+			throw new UsernameNotFoundException(
+					username + " => 사용자명이 존재하지 않습니다.");
+		}
+	}
+	
+	// ▽▽▽▽▽ 예제 A.26 ▽▽▽▽▽
+	/**
+	* 권한 정보 목록에서 권한 정보 가져오기
+	*/
+	private List<GrantedAuthority> getAuthorityList(Role role) {
+		// 권한 리스트
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		// 열거형에서 권한을 가져옴
+		authorities.add(new SimpleGrantedAuthority(role.name()));
+		// ADMIN 역할인 경우 USER 권한도 부여
+		if (role == Role.ADMIN) {
+			authorities.add(
+					new SimpleGrantedAuthority(Role.USER.toString()));
+		}
+		return authorities;
+	}
+	// △△△△△ 예제 A.26 △△△△△
+}

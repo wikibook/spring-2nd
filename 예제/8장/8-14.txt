@@ -1,0 +1,31 @@
+package com.example.demo.validator;
+
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import com.example.demo.form.CalcForm;
+
+@Component
+public class CalcValidator implements Validator {
+	@Override
+	public boolean supports(Class<?> clazz) {
+		// 인수로 전달된 Form이 입력 체크 대상인지 여부를 논리값으로 반환
+		return CalcForm.class.isAssignableFrom(clazz);
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+		// 대상 Form 가져오기
+		CalcForm form = (CalcForm) target;
+		// 값이 들어있는지 판단
+		if (form.getLeftNum() != null && form.getRightNum() != null) {
+			// (왼쪽 입력 항목이 '홀수'이고 오른쪽 입력 항목이 '짝수'가 아닌 경우)
+			if (!((form.getLeftNum() % 2 == 1) && (form.getRightNum() % 2 == 0))) {
+				// 오류 발생 시 직접 오류 메시지를 지정
+				errors.rejectValue("leftNum", null,
+						"왼쪽 숫자는 홀수, 오른쪽 숫자는 짝수여야 합니다.");
+			}
+		}
+	}
+}

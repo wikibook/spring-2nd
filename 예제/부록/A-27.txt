@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ToDo 목록</title>
+</head>
+<body>
+    <h2>ToDo 목록</h2>
+    <!-- 플래시 메시지 표시 -->
+    <p th:if="${message}" th:text="${message}" 
+        style="color: blue;">완료 메시지
+    </p>
+    <p th:if="${errorMessage}" 
+        th:text="${errorMessage}" style="color: red;">
+        오류 메시지
+    </p>
+    <table border="1" width="300">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ToDo</th>
+                <th>상세 보기</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.id}"></td>
+                <td th:text="${todo.todo}"></td>
+                <td>
+                    <a th:href="@{/todos/{id}(id=${todo.id})}">
+                        상세 보기
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/todos/form}">새 할일 등록</a>
+    <!-- ▽▽▽▽▽ 예제 A.27 ▽▽▽▽▽ -->
+    <br>
+	<!-- 메뉴 화면 링크 -->
+	<a th:href="@{/}">메뉴 화면으로</a>
+    <!-- △△△△△ 예제 A.27 △△△△△ -->
+</body>
+</html>

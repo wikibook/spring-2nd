@@ -1,0 +1,9 @@
+-- books 테이블 생성
+CREATE TABLE books (
+	-- 기본키로서의 ID: 자동 증가
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 책 제목: NULL을 허용하지 않음
+	title VARCHAR(255) NOT NULL,
+	-- 책 저자명: NULL을 허용하지 않음
+	author VARCHAR(255) NOT NULL
+);

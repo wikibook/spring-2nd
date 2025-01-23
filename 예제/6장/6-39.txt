@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>fragment</title>
+</head>
+<body>
+	<!-- 18: 프래그먼트 정의 -->
+	<div th:fragment="header">
+		<h1>=== 【헤더】 ===</h1>
+	</div>
+	<div th:fragment="footer">
+		<h1>=== 【푸터】 ===</h1>
+	</div>
+</body>
+</html>

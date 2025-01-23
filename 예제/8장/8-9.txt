@@ -1,0 +1,10 @@
+@Controller
+public class MyController {
+	
+	@RequestMapping("/result")
+	public String submitForm(User user) {
+		// 폼에서 전송된 데이터는 User 객체에 바인딩됨
+		System.out.println("사용자 이름: " + user.getUserName());
+		return "result-page";
+	}
+}

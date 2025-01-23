@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Thymeleaf Sample</title>
+</head>
+<body>
+	<!-- 01: 직접 문자를 삽입 -->
+	<h1 th:text="'hello world'">표시할 부분</h1>
+	<!-- 02: 인라인 처리 -->
+	<h1>[[${name}]] 님, 안녕하세요!</h1>
+	<!-- 03: 값 결합 -->
+	<h1 th:text="'내일은 ' + '맑음' + '입니다.'">표시할 부분</h1>
+	<hr>
+	<!-- 04: 값 결합(리터럴 치환) -->
+	<h1 th:text="|${name} 님, 안녕하세요!|">표시할 부분</h1>
+	<!-- 05: 지역 변수 -->
+	<div th:with="a=1,b=2">
+		<span th:text="|${a} + ${b} = ${a+b}|"></span>
+	</div>
+	<!-- 06: 비교와 등가 -->
+	<span th:text="1 > 10"></span>
+	<span th:text="1 < 10"></span>
+	<span th:text="1 >= 10"></span>
+	<span th:text="1 <= 10"></span>
+	<span th:text="1 == 10"></span>
+	<span th:text="1 != 10"></span>
+	<span th:text="철수 == 철수"></span>
+	<span th:text="철수 != 철수"></span>
+	<hr>
+	<!-- 07: 조건 연산자 -->
+	<p th:text="${name} == '철수'?'철수입니다!':'철수가 아닙니다.'"></p>
+	<!-- ▽▽▽▽▽ 예제 6.32 ▽▽▽▽▽ -->
+	<!-- 08: 조건부 분기(true) -->
+	<th:block th:if="${name} == '철수'">
+		<p>철수입니다!</p>
+	</th:block>
+	<!-- △△△△△ 예제 6.32 △△△△△ -->
+	<!-- 09：조건부 분기(false) -->
+	<div th:unless="${name} == '영희'">
+	    <p>영희가 아닙니다.</p>
+	</div>
+</body>
+</html>

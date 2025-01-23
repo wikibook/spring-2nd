@@ -1,0 +1,23 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.demo.entity.Member;
+
+@Controller
+public class ThymeleafController {
+	// ▽▽▽▽▽ 예제 6.34 ▽▽▽▽▽
+	@GetMapping("show")
+	public String showView(Model model) {
+		// Member 생성
+		Member member = new Member(1, "会員01");
+		// Model에 데이터를 저장
+		model.addAttribute("name", "철수");
+		model.addAttribute("mb", member);
+		// 반환값으로 뷰 이름을 반환
+		return "main";
+	}
+	// △△△△△ 예제 6.34 △△△△△
+}

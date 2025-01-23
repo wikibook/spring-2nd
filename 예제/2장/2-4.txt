@@ -1,0 +1,14 @@
+package used;
+
+/**
+* 계산
+*/
+public interface Calculator {
+	/**
+	* 계산 처리
+	* @param x
+	* @param y
+	* @return 계산 결과
+	*/
+	Integer calc(Integer x, Integer y);
+}

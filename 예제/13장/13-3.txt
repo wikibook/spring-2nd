@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ToDo 상세 보기</title>
+</head>
+<body>
+    <h2>ToDo 상세 보기</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <td th:text="${todo.id}"></td>
+        </tr>
+        <tr>
+            <th>제목</th>
+            <td th:text="${todo.todo}"></td>
+        </tr>
+        <tr>
+            <th>상세 보기</th>
+            <td th:text="${todo.detail}"></td>
+        </tr>
+       <tr>
+            <th>등록 일시</th>
+            <td th:text="${todo.createdAt.format(
+                T(java.time.format.DateTimeFormatter).
+                ofPattern('yyyy/MM/dd HH:mm:ss'))}">
+            </td>
+        </tr>
+       <tr>
+            <th>업데이트 일시</th>
+            <td th:text="${todo.updatedAt.format(
+                T(java.time.format.DateTimeFormatter).
+                ofPattern('yyyy/MM/dd HH:mm:ss'))}">
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/todos}">ToDo 목록으로 가기</a>
+</body>
+</html>

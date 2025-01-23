@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>메뉴 화면</title>
+</head>
+<body>
+	<h1>도서 관리 메뉴ー</h1>
+	<ul>
+		<li><a th:href="@{/list}">도서 목록</a></li>
+		<li><a th:href="@{/detail/2}">도서 상세 정보</a></li>
+		<li><a th:href="@{/create}">도서 등록</a></li>
+		<li><a th:href="@{/update/2}">도서 수정</a></li>
+		<li><a th:href="@{/delete/2}">도서 삭제</a></li>
+	</ul>
+</body>
+</html>

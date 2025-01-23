@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:fragment="base(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <!-- ▼ 여기가 바뀝니다 ▼ -->
+  <title th:replace="${title}">공통 레이아웃</title>
+</head>
+<body>
+  <div style="text-align: center;">
+    <h1>☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆<br>
+      ☆☆　　　　　　공통 헤더　　　　　　☆☆<br>
+      ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆</h1>
+  </div>
+  <!-- ▼ 여기가 바뀝니다 ▼ -->
+  <div style="text-align: center;" th:insert="${content}">내용</div>
+  <div style="text-align: center;">
+    <h1>☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆<br>
+      ☆☆　　　　　　공통 푸터　　　　　　☆☆<br>
+      ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆</h1>
+  </div>
+</body>
+</html>

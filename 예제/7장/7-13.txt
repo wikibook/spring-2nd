@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>확인 화면：Form 클래스 사용</title>
+</head>
+<body>
+	<ul th:object="${sampleForm}">
+		<li>이름: [[*{name}]] </li>
+		<li>나이: [[*{age}]]세</li>
+		<li>생년월일: [[*{birth}]]</li>
+	</ul>
+</body>
+</html>

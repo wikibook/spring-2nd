@@ -1,0 +1,2 @@
+<!-- main.html -->
+<div th:insert="common :: header"></div>

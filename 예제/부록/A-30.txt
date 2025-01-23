@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>403</title>
+</head>
+<body>
+	<h2>403 - 접근 권한이 없습니다</h2>
+	<div>
+		요청한 페이지에 접근할 권한이 없습니다.
+	</div>
+	<a th:href="@{/}">메뉴 화면으로</a>
+</body>
+</html>

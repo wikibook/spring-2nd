@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>상관 항목 검사</title>
+</head>
+<body>
+	<h1 th:text="${message}">메시지</h1>
+</body>
+</html>

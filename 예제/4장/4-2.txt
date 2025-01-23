@@ -1,0 +1,15 @@
+package com.example.demo.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TargetService {
+	
+	public void sayHello(String name) {
+		System.out.println("안녕, " + name + "!");
+	}
+
+	public void sayGoodbye(String name) {
+		System.out.println("잘가, " + name + "!");
+	}
+}

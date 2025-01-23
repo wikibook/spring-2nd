@@ -1,0 +1,2 @@
+//@Component 주석 처리
+public class MorningGreet implements Greet {

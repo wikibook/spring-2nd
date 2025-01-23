@@ -1,0 +1,4 @@
+public interface BookMapper {
+    @Select("SELECT * FROM books WHERE id = #{id}")
+    Book getBookById(int id);
+}

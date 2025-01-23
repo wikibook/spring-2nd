@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>RequestParam</title>
+</head>
+<body>
+	<h1>출력 화면</h1>
+	<hr>
+	<h2 th:text="${value}">전송된 값이 표시됩니다</h2>
+	<a href="./input.html">입력 화면으로 이동</a>
+</body>
+</html>

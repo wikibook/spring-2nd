@@ -1,0 +1,33 @@
+package com.example.webapp.service.impl;
+
+import java.util.Collections;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.example.webapp.entity.LoginUser;
+
+/**
+* UserDetailsService 구현 클래스
+*/
+@Service
+public class LoginUserDatailsServiceImpl implements UserDetailsService {
+	@Override
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+		// 사용자명으로 "minsoo"가 입력되면 UserDetails 구현 클래스를 반환
+		if (username.equals("minsoo")) {
+			// 대상 데이터가 존재
+			// UserDetails의 구현 클래스를 반환
+			return new LoginUser("minsoo",
+					"pass",
+					Collections.emptyList());
+		} else {
+			// 대상 데이터가 존재하지 않음
+			throw new UsernameNotFoundException(
+					username + " => 사용자명이 존재하지 않습니다.");
+		}
+	}
+}

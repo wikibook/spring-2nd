@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.webapp.repository.ToDoMapper">
+    <!-- 전체 검색 -->
+    <select id="selectAll" resultType="com.example.webapp.entity.ToDo">
+        SELECT id, todo, detail, created_at as createdAt, 
+        updated_at as updatedAt FROM todos
+    </select>
+    <!-- 1건 검색 -->
+    <select id="selectById" resultType="com.example.webapp.entity.ToDo">
+        SELECT id, todo, detail, created_at as createdAt, 
+        updated_at as updatedAt FROM todos WHERE id = #{id}
+    </select>
+    <!-- 등록 -->
+    <insert id="insert">
+	    INSERT INTO todos (todo, detail, created_at, updated_at) 
+	    VALUES 
+	    (#{todo}, #{detail}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    </insert>
+    <!-- 업데이트 -->
+    <update id="update">
+	    UPDATE todos SET todo = #{todo}, detail = #{detail}, 
+	    updated_at = CURRENT_TIMESTAMP WHERE id = #{id}
+    </update>
+    <!-- 삭제 -->
+    <delete id="delete">
+        DELETE FROM todos WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,28 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.example.demo.service.TargetService;
+
+@SpringBootApplication
+public class AopSampleApplication {
+	/** 시작 */
+	public static void main(String[] args) {
+		SpringApplication.run(AopSampleApplication.class, args)
+				.getBean(AopSampleApplication.class).exe();
+	}
+
+	/** DI */
+	@Autowired
+	private TargetService service;
+
+	/** 실행 */
+	private void exe() {
+		service.sayHello("철수");
+		// 알기 쉽게 구분선을 표시
+		System.out.println("■□■□■□■□■□");
+		service.sayGoodbye("영희");
+	}
+}

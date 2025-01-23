@@ -1,0 +1,7 @@
+<!-- common.html -->
+<div th:fragment="header">
+    <h1>=== 【헤더】 ===</h1>
+</div>
+<div th:fragment="footer">
+    <h1>=== 【푸터】 ===</h1>
+</div>

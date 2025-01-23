@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BookMapper">
+	<!-- 책과 출판사의 일대일 관계 -->
+	<resultMap id="BookWithPublisherResult"
+	    type="com.example.demo.entity.Book">
+	    <id property="id" column="id" />
+	    <result property="title" column="title" />
+	    <result property="author" column="author" />
+	    <association property="publisher"
+	        javaType="com.example.demo.entity.Publisher">
+	        <id property="id" column="publisher_id" />
+	        <result property="name" column="publisher_name" />
+	    </association>
+	</resultMap>
+	
+	<!-- 책과 리뷰의 일대다 관계 -->
+	<resultMap id="BookWithReviewsResult"
+	    type="com.example.demo.entity.Book">
+	    <id property="id" column="id" />
+	    <result property="title" column="title" />
+	    <result property="author" column="author" />
+	    <collection property="reviews" ofType="com.example.demo.entity.Review">
+	        <id property="id" column="review_id" />
+	        <result property="bookId" column="book_id" />
+	        <result property="reviewText" column="review_text" />
+	    </collection>
+	</resultMap>
+	
+	<!-- ▽▽▽▽▽ 예제 9.20 ▽▽▽▽▽ -->
+	<!-- 【SELECT】 모든 책(출판사)을 가져오기 위한 SQL 정의 -->
+	<select id="getAllBooks" resultMap="BookWithPublisherResult">
+	    SELECT
+	    b.id, b.title, b.author,
+	    p.id as publisher_id, p.name as publisher_name
+	    FROM books b
+	    INNER JOIN publishers p ON b.publisher_id = p.id
+	    ORDER BY b.id
+	</select>
+	<!-- △△△△△ 예제 9.20 △△△△△ -->
+	
+	<!-- 【SELECT】 특정 ID를 가진 책을 가져오기 위한 SQL을 정의 -->
+	<select id="getBookById" resultType="com.example.demo.entity.Book">
+		SELECT id, title, author FROM books WHERE id = #{id}
+	</select>
+	
+	<!-- 【INSERT】 새로운 책을 데이터베이스에 추가하는 SQL을 정의 -->
+	<insert id="insertBook" parameterType="com.example.demo.entity.Book">
+		INSERT INTO books (title, author) VALUES (#{title}, #{author})
+	</insert>
+	
+	<!-- 【UPDATE】 특정 ID를 가진 책의 정보를 업데이트하는 SQL을 정의 -->
+	<update id="updateBook" parameterType="com.example.demo.entity.Book">
+		UPDATE books SET title = #{title}, author = #{author}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 【DELETE】 특정 ID를 가진 책의 정보를 삭제하는 SQL을 정의 -->
+	<delete id="deleteBookById" parameterType="int">
+		DELETE FROM books WHERE id = #{id}
+	</delete>
+</mapper>

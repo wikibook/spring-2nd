@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>상관 항목 검사</title>
+</head>
+<body>
+	<h1>@AssertTrue 활용</h1>
+	<form th:action="@{/}" th:object="${sampleForm}" method="post">
+		<p>비밀번호　　　  <input type="password" th:field="*{password}" /></p>
+		<p>확인용 비밀번호 <input type="password" th:field="*{confirmPassword}" /></p>
+		<!-- 상관 항목 검사 오류 메시지 -->
+		<p th:if="${#fields.hasErrors('samePassword')}" 
+			th:errors="*{samePassword}" style="color: red;">
+			상관 항목 검사 오류
+		</p>
+		<p><input type="submit" value="확인" /></p>
+	</form>
+</body>
+</html>

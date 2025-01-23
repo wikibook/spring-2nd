@@ -1,0 +1,4 @@
+<!-- 【SELECT】 특정 ID를 가진 책을 가져오기 위한 SQL을 정의 -->
+<select id="getBookById" resultType="com.example.demo.entity.Book">
+    SELECT id, title, author FROM books WHERE id = #{id}
+</select>

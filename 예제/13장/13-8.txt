@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ToDo 폼</title>
+</head>
+<body>
+    <!-- 제목: 등록 또는 편집 -->
+    <h2 th:if="${toDoForm.isNew}">새 ToDo 등록</h2>
+    <h2 th:unless="${toDoForm.isNew}">ToDo 편집</h2>
+    <!-- 액션: 등록 또는 편집 -->
+    <form th:action="${toDoForm.isNew} ? @{/todos/save} : @{/todos/update}"
+        th:object="${toDoForm}" method="post">
+        <!-- id는 업데이트 시 필요하기 때문에 hidden으로 보유 -->
+        <input type="hidden" th:field="*{id}">
+        <table>
+            <tr>
+                <th>ToDo</th>
+                <td>
+                    <input type="text" th:field="*{todo}">
+                </td>
+            </tr>
+            <tr>
+                <th>상세</th>
+                <td>
+                    <textarea rows="5" cols="30" th:field="*{detail}">
+					</textarea>
+                </td>
+            </tr>
+        </table>
+        <!-- 버튼: 등록 또는 편집 -->
+        <input th:if="${toDoForm.isNew}" type="submit" value="등록">
+        <input th:unless="${toDoForm.isNew}" type="submit" value="업데이트">
+    </form>
+    <a th:href="@{/todos}">돌아가기</a>
+</body>
+</html>

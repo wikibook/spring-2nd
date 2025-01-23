@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.webapp.repository.AuthenticationMapper">
+	<!-- 사용자명으로 인증 정보를 조회 -->
+	<select id="selectByUsername" resultType="com.example.webapp.entity.Authentication">
+		SELECT username, password, authority FROM
+			authentications WHERE username = #{username}
+	</select>
+</mapper>

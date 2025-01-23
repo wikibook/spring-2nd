@@ -1,0 +1,18 @@
+package use;
+
+import used.Calculator;
+import used.SubCalc;
+
+/**
+* 인터페이스 의존성을 확인하기 위한 클래스
+*/
+public class Call {
+	public static void main(String[] args) {
+		// 뺄셈 클래스 인스턴스화
+		Calculator calculator = new SubCalc();  // ← 수정
+		// 메서드 실행
+		Integer result = calculator.calc(10, 5);
+		// 결과 표시
+		System.out.println("계산 결과는 " + result + "입니다.");
+	}
+}

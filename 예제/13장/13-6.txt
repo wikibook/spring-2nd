@@ -1,0 +1,33 @@
+package com.example.webapp.helper;
+
+import com.example.webapp.entity.ToDo;
+import com.example.webapp.form.ToDoForm;
+
+/**
+ * ToDo: 헬퍼
+ */
+public class ToDoHelper {
+    /**
+     * ToDo로 변환
+     */
+    public static ToDo convertToDo(ToDoForm form) {
+        ToDo todo = new ToDo();
+        todo.setId(form.getId());
+        todo.setTodo(form.getTodo());
+        todo.setDetail(form.getDetail());
+        return todo;
+    }
+
+    /**
+     * ToDoForm으로 변환
+     */
+    public static ToDoForm convertToDoForm(ToDo todo) {
+        ToDoForm form = new ToDoForm();
+        form.setId(todo.getId());
+        form.setTodo(todo.getTodo());
+        form.setDetail(todo.getDetail());
+        // 업데이트 화면 설정
+        form.setIsNew(false);
+        return form;
+    }
+}

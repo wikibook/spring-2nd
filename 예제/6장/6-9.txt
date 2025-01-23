@@ -1,0 +1,9 @@
+<!-- 06: 비교와 등가 -->
+<span th:text="1 > 10"></span>
+<span th:text="1 < 10"></span>
+<span th:text="1 >= 10"></span>
+<span th:text="1 <= 10"></span>
+<span th:text="1 == 10"></span>
+<span th:text="1 != 10"></span>
+<span th:text="철수 == 철수"></span>
+<span th:text="철수 != 철수"></span>
