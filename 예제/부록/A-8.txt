@@ -13,7 +13,7 @@ import com.example.webapp.entity.LoginUser;
 * UserDetailsService 구현 클래스
 */
 @Service
-public class LoginUserDatailsServiceImpl implements UserDetailsService {
+public class LoginUserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
